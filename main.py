@@ -23,15 +23,6 @@ Bit: 24
 Key: {}
 '''.format(frequency, str(dec2hex))
 
-# Create the text for the file
-print("Filetype: Flipper SubGhz Key File")
-print("Version: 1")
-print("Frequency: " + str(frequency))
-print("Preset: FuriHalSubGhzPresetOok650Asyn")
-print("Protocol: MegaCode")
-print("Bit: 24")
-print("Key: " + str(dec2hex))
-
 print(text)
 
 a = input("Would you like to save this as a file? y/n ").lower()[0]
