@@ -4,7 +4,7 @@
 # We would love to see it ported to the Flipper
 
 
-version = input("Wireless keypad or remote?? k(keypad)/r(remote) ").lower()[0]
+version = input("Is this key generated from a Wireless keypad or remote? k(keypad)/r(remote) ").lower()[0]
 
 if version == "r":
     fc = int(input("Enter the facility Code: "))
@@ -45,4 +45,3 @@ if a == "y":
             f.write(text)
     except FileNotFoundError:
         print("Error creating the file.")
-        
