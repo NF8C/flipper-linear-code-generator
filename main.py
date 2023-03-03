@@ -47,7 +47,7 @@ def validate(acceptable_answers, user_input, questions_to_ask="error", low="n", 
         if user_input in acceptable_answers:
             return user_input
         else:
-            print("That is not a valid option. {}", acceptable_answers)
+            print("That is not a valid option. {}".format(acceptable_answers))
             user_input = validate(acceptable_answers, input(questions_to_ask), questions_to_ask, low, high)
     return user_input
 
@@ -124,24 +124,26 @@ def loop(times=1):
         dec2hex = (((tn*8)+8388608)+(fc*524288)+bn).to_bytes(8, "big").hex(" ").upper()
 
         text = '''Filetype: Flipper SubGhz Key File
-        Version: 1.0
-        Frequency: {}
-        Preset: FuriHalSubGhzPresetOok650Async
-        Protocol: MegaCode
-        Bit: 24
-        Key: {}
-        '''.format(frequency, str(dec2hex))
+Version: 1.0
+Frequency: {}
+Preset: FuriHalSubGhzPresetOok650Async
+Protocol: MegaCode
+Bit: 24
+Key: {}
+'''.format(frequency, str(dec2hex))
 
         print(text)
 
-        a = input("Would you like to save this as a file? y/n ").lower()[0]
+        menu = "Would you like to save this as a file? y/n "
+        a = validate(["y", "n"], input(menu), menu)
         if a == "q":
             break
 
         name = ""
         if a == "y":
             name = input("Enter a file name without an extension ex. garage "
-                      "or press enter for the default file naming option: ").replace(" ", "_") + "_FC{}_TN{}_BN{}.sub".format(fc, tn, bn)
+                         "or press enter for the default file naming option: ").replace(" ", "_") + \
+                   "_FC{}_TN{}_BN{}.sub".format(fc, tn, bn)
 
             try:
                 with open(name, 'w') as f:
